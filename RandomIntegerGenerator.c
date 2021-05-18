@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX 100
-#define MIN -100
+#define MAX 2000
+#define MIN -2000
 
 int main(int argc, char **argv)
 {
@@ -19,3 +19,5 @@ int main(int argc, char **argv)
 	}
 	return(0);
 }
+
+// ARG=$(./a.out 10)

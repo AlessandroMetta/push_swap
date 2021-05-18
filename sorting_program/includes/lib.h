@@ -7,4 +7,6 @@
 t_list *stack_a;
 t_list *stack_b;
 
+void args_checker(int argc, char **argv);
+
 #endif

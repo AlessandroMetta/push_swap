@@ -1,4 +1,4 @@
-# IN CASE OF DEBUGGING PURPOSE: gcc libft/*/*.c push_swap_/*/*.c -g
+# IN CASE OF DEBUGGING PURPOSE: gcc sorting_program/srcs/*.c stack_action/srcs/*.c libft/srcs/*.c -g
 
 NAME	=	push_swap
 
@@ -26,6 +26,9 @@ SRCS =	sorting_program/srcs/main.c	\
 		libft/srcs/ft_strlen.c		\
 		libft/srcs/ft_isdigit.c		\
 		libft/srcs/ft_strncmp.c	\
+		sorting_program/srcs/args_checker.c	\
+		libft/srcs/utils.c	\
+		libft/srcs/ft_isspace.c	\
 
 OBJ		=	$(SRCS:%.c=%.o)
 

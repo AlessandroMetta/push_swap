@@ -9,20 +9,18 @@ int	ft_atoi(const char *str)
 	num = 0;
 	i = 0;
 	sign = 1;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v' || str[i] == '\r'
-			|| str[i] == '\n' || str[i] == '\f')
+	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-')
-	{
-		sign = -1;
+		sign *= -1;
+	if (str[i] == '+' || str[i] == '-')
 		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (ft_isdigit(str[i]))
 	{
 		num = (num * 10) + (str[i] - '0');
 		i++;
 	}
+	if ((num > 2147483648) || (num > 2147483648 && sign == -1))
+		error_message();
 	return (num * sign);
 }

@@ -1,46 +1,51 @@
-# IN CASE OF DEBUGGING PURPOSE: gcc sorting_program/srcs/*.c stack_action/srcs/*.c libft/srcs/*.c -g
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ametta <ametta@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/05/19 09:59:31 by ametta            #+#    #+#              #
+#    Updated: 2021/05/19 11:09:43 by ametta           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME	=	push_swap
+# IN CASE OF DEBUGGING PURPOSE: gcc */srcs/*.c -g
 
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
+NAME			=	push_swap
 
-RM = rm -f
+CC				=	gcc
+CFLAGS			=	-Wall -Wextra -Werror
 
-SRCS =	sorting_program/srcs/main.c	\
-		stack_action/srcs/p.c	\
-		stack_action/srcs/s.c	\
-		stack_action/srcs/r.c	\
-		stack_action/srcs/rr.c	\
-		libft/srcs/ft_lstnew.c	\
-		libft/srcs/ft_lstprint.c	\
-		libft/srcs/ft_lstlen.c	\
-		libft/srcs/ft_lstlast.c	\
-		libft/srcs/ft_lstfree.c	\
-		libft/srcs/ft_lstcreate.c	\
-		libft/srcs/ft_lstadd_back.c	\
-		libft/srcs/ft_atoi.c	\
-		libft/srcs/ft_split.c	\
-		libft/srcs/ft_memcpy.c		\
-		libft/srcs/ft_strlcpy.c		\
-		libft/srcs/ft_strlen.c		\
-		libft/srcs/ft_isdigit.c		\
-		libft/srcs/ft_strncmp.c	\
-		sorting_program/srcs/args_checker.c	\
-		libft/srcs/utils.c	\
-		libft/srcs/ft_isspace.c	\
+FT_PRINT		=	libs/ft_printf/libftprintf.a
+LIBFT			=	libs/libft/libft.a
+STACK_ACTION	=	stack_action/stack_action.a
+
+RM		=	rm -f
+
+SRCS	=	sorting_program/srcs/main.c	\
+			sorting_program/srcs/args_checker.c	\
 
 OBJ		=	$(SRCS:%.c=%.o)
 
 $(NAME) :	$(OBJ)
-			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -g
+			make -C libs/libft
+			make -C libs/ft_printf
+			make -C stack_action
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(FT_PRINT) $(LIBFT) $(STACK_ACTION)
 
 all		:	$(NAME)
 
 clean	:	
+			make clean -C libs/libft
+			make clean -C libs/ft_printf
+			make clean -C stack_action
 			$(RM) $(OBJ)
 
 fclean	:	clean
+			make fclean -C libs/libft
+			make fclean -C libs/ft_printf
+			make fclean -C stack_action
 			$(RM) $(NAME)
 
 re		:	fclean all

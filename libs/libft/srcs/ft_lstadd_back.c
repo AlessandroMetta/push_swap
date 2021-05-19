@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_push_swap.h                                    :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:59:16 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/19 09:59:17 by ametta           ###   ########.fr       */
+/*   Created: 2021/05/19 09:58:36 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 09:58:39 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_PUSH_SWAP_H
-# define LIB_PUSH_SWAP_H
+#include "../includes/libft.h"
 
-void	ra(void);
-void	rra(void);
-void	sa(void);
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*last;
 
-void	rb(void);
-void	rrb(void);
-void	sb(void);
-
-void	ss(void);
-void	rr(void);
-void	rrr(void);
-
-void	pb(void);
-void	pa(void);
-
-#endif
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = *lst;
+	while (last->next)
+		last = last->next;
+	if (new)
+	{
+		last->next = new;
+		new->next = NULL;
+	}
+}

@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_push_swap.h                                    :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:59:16 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/19 09:59:17 by ametta           ###   ########.fr       */
+/*   Created: 2021/05/19 09:58:31 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 09:58:32 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_PUSH_SWAP_H
-# define LIB_PUSH_SWAP_H
+#include "../includes/libft.h"
 
-void	ra(void);
-void	rra(void);
-void	sa(void);
-
-void	rb(void);
-void	rrb(void);
-void	sb(void);
-
-void	ss(void);
-void	rr(void);
-void	rrr(void);
-
-void	pb(void);
-void	pa(void);
-
-#endif
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}

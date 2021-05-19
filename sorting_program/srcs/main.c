@@ -1,18 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/19 09:59:13 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 10:43:48 by ametta           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lib.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc <= 1)
 	{
 		write(1, "Error", 5);
-		return 1;
+		return (1);
 	}
 	args_checker(argc, argv);
 	ft_lstcreate(&stack_a, argv, argc);
-	printf("\nBEGINNIG:\t");
+	ft_printf("\nBEGINNIG:\t");
 	ft_lstprint(stack_a);
+	ft_printf("\n");
+	ft_lstfree(stack_a);
+	ft_lstfree(stack_b);
+	return (0);
+}
 
-	//			DEBUGGING
+	// //			DEBUGGING
 	// printf("\nsize of stack A: %d\n", ft_lstlen(stack_a));
 
 	// // 			DEBUGGING RA
@@ -75,7 +92,7 @@ int main(int argc, char **argv)
 	// pa();
 	// pa();
 	// pa();
-	
+
 	// printf("\nBEGINNING stack A:\t");
 	// ft_lstprint(stack_a);
 	// printf("BEGINNING stack B:\t");
@@ -98,9 +115,3 @@ int main(int argc, char **argv)
 	// ft_lstprint(stack_a);
 	// printf("AFTER rrr (stack B):\t");
 	// ft_lstprint(stack_b);
-
-	printf("\n");
-	ft_lstfree(stack_a);	// questa ci deve essere sempre
-	ft_lstfree(stack_b);
-	return 0;
-}

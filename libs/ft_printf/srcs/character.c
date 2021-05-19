@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_push_swap.h                                    :+:      :+:    :+:   */
+/*   character.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:59:16 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/19 09:59:17 by ametta           ###   ########.fr       */
+/*   Created: 2021/05/19 12:08:40 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 12:10:43 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_PUSH_SWAP_H
-# define LIB_PUSH_SWAP_H
+#include "../includes/ft_printf.h"
 
-void	ra(void);
-void	rra(void);
-void	sa(void);
+void	ft_print_chr(va_list arg, t_specs *specs, int *printed)
+{
+	char	chr;
+	int		i;
 
-void	rb(void);
-void	rrb(void);
-void	sb(void);
-
-void	ss(void);
-void	rr(void);
-void	rrr(void);
-
-void	pb(void);
-void	pa(void);
-
-#endif
+	i = 0;
+	chr = va_arg(arg, int);
+	if (specs->minus)
+		write(1, &chr, 1);
+	while (i < specs->width - 1)
+	{
+		write(1, " ", 1);
+		i++;
+		(*printed)++;
+	}
+	if (!specs->minus)
+		write(1, &chr, 1);
+	(*printed)++;
+}

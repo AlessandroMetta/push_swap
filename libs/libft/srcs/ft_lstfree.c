@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_push_swap.h                                    :+:      :+:    :+:   */
+/*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:59:16 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/19 09:59:17 by ametta           ###   ########.fr       */
+/*   Created: 2021/05/19 09:58:43 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 09:58:44 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_PUSH_SWAP_H
-# define LIB_PUSH_SWAP_H
+#include "../includes/libft.h"
 
-void	ra(void);
-void	rra(void);
-void	sa(void);
-
-void	rb(void);
-void	rrb(void);
-void	sb(void);
-
-void	ss(void);
-void	rr(void);
-void	rrr(void);
-
-void	pb(void);
-void	pa(void);
-
-#endif
+void	ft_lstfree(t_list *lst)
+{
+	if (lst)
+	{
+		if (lst->next)
+			ft_lstfree(lst->next);
+		free(lst);
+	}
+}

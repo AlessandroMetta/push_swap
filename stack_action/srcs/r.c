@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   r.c                                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/19 09:59:21 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 09:59:22 by ametta           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../sorting_program/includes/lib.h"
 
-void ra()
+void	ra(void)
 {
+	t_list	*last;
+	t_list	*toMove;
+
 	if (stack_a && ft_lstlen(stack_a) > 1)
 	{
-		t_list *last;
-		t_list *toMove;
-
 		toMove = stack_a->next;
 		last = ft_lstlast(stack_a);
 		last->next = stack_a;
@@ -16,13 +28,13 @@ void ra()
 	}
 }
 
-void rb()
+void	rb(void)
 {
+	t_list	*last;
+	t_list	*toMove;
+
 	if (stack_b && ft_lstlen(stack_b) > 1)
 	{
-		t_list *last;
-		t_list *toMove;
-
 		toMove = stack_b->next;
 		last = ft_lstlast(stack_b);
 		last->next = stack_b;
@@ -32,7 +44,7 @@ void rb()
 	}
 }
 
-void rr()
+void	rr(void)
 {
 	ra();
 	rb();

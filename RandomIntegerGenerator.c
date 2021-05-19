@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX 2000
-#define MIN -2000
+#define MAX 1000000
+#define MIN -1000000
 
 int main(int argc, char **argv)
 {

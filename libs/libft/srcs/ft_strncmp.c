@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_push_swap.h                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:59:16 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/19 09:59:17 by ametta           ###   ########.fr       */
+/*   Created: 2021/05/19 09:59:03 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 09:59:05 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_PUSH_SWAP_H
-# define LIB_PUSH_SWAP_H
+#include "../includes/libft.h"
 
-void	ra(void);
-void	rra(void);
-void	sa(void);
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
 
-void	rb(void);
-void	rrb(void);
-void	sb(void);
-
-void	ss(void);
-void	rr(void);
-void	rrr(void);
-
-void	pb(void);
-void	pa(void);
-
-#endif
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0' && i < n)
+		i++;
+	if (i < n)
+		return ((((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]));
+	else
+		return (0);
+}

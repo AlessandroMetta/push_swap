@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_push_swap.h                                    :+:      :+:    :+:   */
+/*   percentual.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:59:16 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/19 09:59:17 by ametta           ###   ########.fr       */
+/*   Created: 2021/05/19 12:09:02 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 12:10:26 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_PUSH_SWAP_H
-# define LIB_PUSH_SWAP_H
+#include "../includes/ft_printf.h"
 
-void	ra(void);
-void	rra(void);
-void	sa(void);
-
-void	rb(void);
-void	rrb(void);
-void	sb(void);
-
-void	ss(void);
-void	rr(void);
-void	rrr(void);
-
-void	pb(void);
-void	pa(void);
-
-#endif
+void	ft_print_prc(int *printed, t_specs *specs)
+{
+	if (!specs->minus && specs->zero)
+		(*printed) += fill('0', specs->width - 1);
+	if (!specs->minus && !specs->zero)
+		(*printed) += fill(' ', specs->width - 1);
+	write(1, "%", 1);
+	(*printed)++;
+	if (specs->minus)
+		(*printed) += fill(' ', specs->width - 1);
+}

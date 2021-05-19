@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   args_checker.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/19 09:59:11 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 09:59:12 by ametta           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lib.h"
 
-void args_checker(int argc, char **argv)
+void	args_checker(int argc, char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	j = 0;
@@ -15,6 +27,7 @@ void args_checker(int argc, char **argv)
 					error_message();
 	}
 	else
+	{
 		while (argv[++j])
 		{
 			i = -1;
@@ -23,4 +36,5 @@ void args_checker(int argc, char **argv)
 					if (!ft_isdigit(argv[j][i]) && argv[j][i] != '+')
 						error_message();
 		}
+	}
 }

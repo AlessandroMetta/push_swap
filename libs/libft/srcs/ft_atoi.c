@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p.c                                                :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:59:19 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/19 09:59:20 by ametta           ###   ########.fr       */
+/*   Created: 2021/05/19 09:58:26 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 09:58:29 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../sorting_program/includes/lib.h"
+#include "../includes/libft.h"
 
-void	pb(void)
+int	ft_atoi(const char *str)
 {
-	t_list	*toMove;
+	size_t	i;
+	int		sign;
+	size_t	num;
 
-	if (stack_b)
+	num = 0;
+	i = 0;
+	sign = 1;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-')
+		sign *= -1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (ft_isdigit(str[i]))
 	{
-		toMove = stack_b;
-		stack_b = stack_b->next;
-		toMove->next = stack_a;
-		stack_a = toMove;
+		num = (num * 10) + (str[i] - '0');
+		i++;
 	}
-}
-
-void	pa(void)
-{
-	t_list	*toMove;
-
-	if (stack_a)
-	{
-		toMove = stack_a;
-		stack_a = stack_a->next;
-		toMove->next = stack_b;
-		stack_b = toMove;
-	}
+	if ((num > 2147483648) || (num > 2147483648 && sign == -1))
+		error_message();
+	return (num * sign);
 }

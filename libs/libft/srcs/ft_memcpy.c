@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_push_swap.h                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:59:16 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/19 09:59:17 by ametta           ###   ########.fr       */
+/*   Created: 2021/05/19 09:58:54 by ametta            #+#    #+#             */
+/*   Updated: 2021/05/19 09:58:55 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_PUSH_SWAP_H
-# define LIB_PUSH_SWAP_H
+#include "../includes/libft.h"
 
-void	ra(void);
-void	rra(void);
-void	sa(void);
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+{
+	size_t	i;
 
-void	rb(void);
-void	rrb(void);
-void	sb(void);
-
-void	ss(void);
-void	rr(void);
-void	rrr(void);
-
-void	pb(void);
-void	pa(void);
-
-#endif
+	i = 0;
+	while (i < n)
+	{
+		((char *)dst)[i] = ((unsigned char *)src)[i];
+		if (((unsigned char *)src)[i] == (unsigned char)c)
+			return (dst + (i + 1));
+		i++;
+	}
+	return (NULL);
+}

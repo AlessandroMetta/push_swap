@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:19 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/19 09:59:20 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/19 18:34:17 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ void	pb(void)
 {
 	t_list	*toMove;
 
-	if (stack_b)
+	if (stack_a)
 	{
-		toMove = stack_b;
-		stack_b = stack_b->next;
-		toMove->next = stack_a;
-		stack_a = toMove;
+		toMove = stack_a;
+		stack_a = stack_a->next;
+		if (stack_b)
+			toMove->next = stack_b;
+		else
+			toMove->next = NULL;
+		stack_b = toMove;
 	}
 }
 
@@ -29,11 +32,14 @@ void	pa(void)
 {
 	t_list	*toMove;
 
-	if (stack_a)
+	if (stack_b)
 	{
-		toMove = stack_a;
-		stack_a = stack_a->next;
-		toMove->next = stack_b;
-		stack_b = toMove;
+		toMove = stack_b;
+		stack_b = stack_b->next;
+		if (stack_a)
+			toMove->next = stack_a;
+		else
+			toMove->next = NULL;
+		stack_a = toMove;
 	}
 }

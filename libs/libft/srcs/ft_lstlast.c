@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:58:45 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/19 09:58:46 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/19 17:16:57 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*last;
-
-	last = lst;
-	while (last->next)
-		last = last->next;
-	return (last);
+	while (lst->next)
+	{
+		lst = lst->next;
+	}
+	return (lst);
 }

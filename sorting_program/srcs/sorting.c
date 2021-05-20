@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:26:56 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 12:31:05 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/20 17:58:05 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,32 @@ static int	control(void)
 	return (0);
 }
 
-static int	pre_sorting(void)
+static int max_value(t_list *stack)
+{
+	int max;
+
+	max = (int)stack->content;
+	while (stack->next)
+	{
+		stack = stack->next;
+		if ((int)stack->content > max)
+			max = (int)stack->content;
+	}
+	return (max);
+}
+
+static void	pre_sorting(int *counter)
 {
 	int	tmp;
 	int	boool;
-	int	counter;
+	int max;
 
 	tmp = 0;
 	boool = 0;
-	counter = 0;
-	while (stack_a && (counter == 0 || (int)stack_a->content != tmp))
+	max = max_value(stack_a) / 2;
+	while (stack_a && (*counter == 0 || (int)stack_a->content != tmp))
 	{
-		if (!stack_b || (int)stack_a->content > (int)ft_lstlast(stack_b)->content)
+		if ((int)stack_a->content > max)
 		{
 			pb();
 			boool = 1;
@@ -53,9 +67,8 @@ static int	pre_sorting(void)
 			}
 			ra();
 		}
-		counter++;
+		(*counter)++;
 	}
-	return (counter);
 }
 
 static void	final_sorting(int *counter)
@@ -95,10 +108,11 @@ int sorting(void)
 	counter = 0;
 	while (control())
 	{
-		counter += pre_sorting();
+		pre_sorting(&counter);
 		while (stack_b)
 			final_sorting(&counter);
 	}
 	return (counter);
 }
+
 // 2 12 17 19 9 11 0 7

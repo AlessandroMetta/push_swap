@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:13 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:49:29 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/24 11:20:58 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	}
 	args_checker(argc, argv);
 	ft_lstcreate(&stack_a, argv, argc);
-	ft_printf("-----The algoritm takes: %d moves\n", sorting());
+	sorting();
 	ft_lstfree(stack_a);
 	ft_lstfree(stack_b);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:08 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:49:23 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/24 11:19:26 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ t_list	*stack_a;
 t_list	*stack_b;
 
 void	args_checker(int argc, char **argv);
-int		sorting(void);
+void		sorting(void);
 
 #endif

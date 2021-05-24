@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:26:56 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:58:05 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/24 17:10:25 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	control(void)
 	t_list	*check;
 
 	check = stack_a;
-	while (check->next)
+	while (check && check->next)
 	{
 		tmp = (int)check->content;
 		check = check->next;
@@ -28,51 +28,73 @@ static int	control(void)
 	return (0);
 }
 
-static int max_value(t_list *stack)
+static int middle_value(t_list *stack)
 {
-	int max;
+	int midVal;
+	int i;
 
-	max = (int)stack->content;
-	while (stack->next)
+	midVal = 0;
+	i = 0;
+	while (stack)
 	{
+		midVal += (int)stack->content;
+		i++;
 		stack = stack->next;
-		if ((int)stack->content > max)
-			max = (int)stack->content;
 	}
-	return (max);
+	midVal /= i;
+	return (midVal);
 }
 
-static void	pre_sorting(int *counter)
+static int	pre_sorting()
 {
 	int	tmp;
-	int	boool;
-	int max;
+	int	move_count;
+	int midVal;
+	int counter;
 
+	counter = 0;
 	tmp = 0;
-	boool = 0;
-	max = max_value(stack_a) / 2;
-	while (stack_a && (*counter == 0 || (int)stack_a->content != tmp))
+	move_count = 1;
+	midVal = middle_value(stack_a);
+	int halfStack = ft_lstlen(stack_a)/2;
+	while (stack_a && halfStack && (counter == 0 || (int)stack_a->content != tmp))
 	{
-		if ((int)stack_a->content > max)
+		if ((int)stack_a->content < midVal)
 		{
-			pb();
-			boool = 1;
+			if ((int)stack_b->content && (int)stack_a->content < (int)ft_lstlast(stack_b)->content)
+			{
+				pb();
+				rb();
+				(counter) += 2;
+			}
+			else
+			{
+				pb();
+				(counter)++;
+			}
+			(counter)++;
+			move_count = 0;
 		}
 		else
 		{
-			if (boool == 1)
+			if (move_count == 0)
 			{
 				tmp = (int)stack_a->content;
-				boool = 0;
+				move_count++;
 			}
 			ra();
+			(counter)++;
+			move_count++;
 		}
-		(*counter)++;
+		halfStack--;
 	}
+	return (counter);
 }
 
 static void	final_sorting(int *counter)
 {
+	// ft_printf("_____________________________\n");
+	// ft_printf("problems here\n");
 	if (stack_b)
 	{
 		if (!stack_a)
@@ -81,38 +103,72 @@ static void	final_sorting(int *counter)
 			*counter += 1;
 			final_sorting(counter);
 		}
-		else if ((int)stack_b->content > (int)ft_lstlast(stack_a)->content)
+		else if ((int)stack_b->content < (int)(stack_a)->content)
 		{
 			pa();
-			ra();
-			*counter += 2;
-			final_sorting(counter);
+			(*counter)++;
+			// ft_printf("_____________________________\n");
+			// ft_printf("after finalsorting\n");
+			// ft_printf("stack a: \t");
+			// ft_lstprint(stack_a);
+			// ft_printf("stack b: \t");
+			// ft_lstprint(stack_b);
+			// ft_printf("value of counter: %d\n", *counter);
+			// final_sorting(counter);
 		}
 		else
 		{
-			rra();
 			pb();
-			rb();
-			if (stack_a)
-				*counter -= 2;
-			else
-				*counter -= 1;
+			sb();
+			// ft_printf("_____________________________\n");
+			// ft_printf("after finalsorting\n");
+			// ft_printf("stack a: \t");
+			// ft_lstprint(stack_a);
+			// ft_printf("stack b: \t");
+			// ft_lstprint(stack_b);
+			// ft_printf("value of counter: %d\n", *counter);
 		}
 	}
 }
 
-int sorting(void)
+void sorting(void)
 {
 	int	counter;
 
 	counter = 0;
+	// while (control())
+	// {
+	// 	while (control())
+	// 		counter += pre_sorting();
+		// ft_printf("_____________________________\n");
+		// ft_printf("after presorting\n");
+		// ft_printf("stack a: \t");
+		// ft_lstprint(stack_a);
+		// ft_printf("stack b: \t");
+		// ft_lstprint(stack_b);
+		// ft_printf("value of counter: %d\n", counter);
+	// 	while (stack_b){
+	// 		final_sorting(&counter);
+	// 	}
+	// }
 	while (control())
-	{
-		pre_sorting(&counter);
-		while (stack_b)
-			final_sorting(&counter);
-	}
-	return (counter);
+		counter += pre_sorting();
+	ft_printf("stack a: \t");
+	ft_lstprint(stack_a);
+	ft_printf("stack b: \t");
+	ft_lstprint(stack_b);
+	ft_printf("-----parziale: %d moves\n", counter);
+	while (stack_b)
+		final_sorting(&counter);
+
+	// ft_printf("stack a: \t");
+	// ft_lstprint(stack_a);
+	// ft_printf("stack b: \t");
+	// ft_lstprint(stack_b);
+	if (control())
+		ft_printf("-----not sorted\n");
+	else
+		ft_printf("-----The algoritm takes: %d moves\n", counter);
 }
 
 // 2 12 17 19 9 11 0 7

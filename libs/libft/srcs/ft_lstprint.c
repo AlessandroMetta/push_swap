@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:58:51 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:45 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/24 10:33:10 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@ void	ft_lstprint(t_list *lst)
 		}
 		ft_printf("%d\n", (int)(lst)->content);
 	}
+	else
+		ft_printf("Empty\n");
 }

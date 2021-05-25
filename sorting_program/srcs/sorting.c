@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:26:56 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/24 17:10:25 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/25 12:56:03 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,21 @@ static int	pre_sorting()
 	tmp = 0;
 	move_count = 1;
 	midVal = middle_value(stack_a);
-	int halfStack = ft_lstlen(stack_a)/2;
-	while (stack_a && halfStack && (counter == 0 || (int)stack_a->content != tmp))
+	// int halfStack = ft_lstlen(stack_a)/2;
+	while (control() || (int)stack_a->content < midVal)
 	{
 		if ((int)stack_a->content < midVal)
 		{
-			if ((int)stack_b->content && (int)stack_a->content < (int)ft_lstlast(stack_b)->content)
+			if (stack_b && (int)stack_a->content < (int)ft_lstlast(stack_b)->content)
 			{
 				pb();
 				rb();
+				(counter) += 2;
+			}
+			else if (stack_b && (int)stack_a->content < (int)stack_b->content)
+			{
+				pa();
+				sa();
 				(counter) += 2;
 			}
 			else
@@ -72,7 +78,6 @@ static int	pre_sorting()
 				pb();
 				(counter)++;
 			}
-			(counter)++;
 			move_count = 0;
 		}
 		else
@@ -82,11 +87,19 @@ static int	pre_sorting()
 				tmp = (int)stack_a->content;
 				move_count++;
 			}
-			ra();
-			(counter)++;
+			if ((int)stack_a->content > (int)ft_lstlast(stack_a)->content)
+			{
+				ra();
+				(counter)++;
+			}
+			else
+			{
+				rra();
+				sa();
+				(counter) += 2;
+			}
 			move_count++;
 		}
-		halfStack--;
 	}
 	return (counter);
 }
@@ -151,13 +164,13 @@ void sorting(void)
 	// 		final_sorting(&counter);
 	// 	}
 	// }
-	while (control())
+	// while (control())
 		counter += pre_sorting();
 	ft_printf("stack a: \t");
 	ft_lstprint(stack_a);
-	ft_printf("stack b: \t");
+	ft_printf("\nstack b: \t");
 	ft_lstprint(stack_b);
-	ft_printf("-----parziale: %d moves\n", counter);
+	ft_printf("\n-----parziale: %d moves\n", counter);
 	while (stack_b)
 		final_sorting(&counter);
 

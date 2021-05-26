@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:08 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/24 11:19:26 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/26 12:30:27 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 # include "../../libs/libft/includes/libft.h"
 # include "../../stack_action/includes/lib_push_swap.h"
 
-t_list	*stack_a;
-t_list	*stack_b;
-
 void	args_checker(int argc, char **argv);
-void		sorting(void);
+void	sorting(t_list **stack_a, t_list **stack_b);
 
 #endif

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:58:43 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:35 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/26 12:17:50 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_lstfree(t_list *lst)
+void	ft_lstfree(t_list *list)
 {
-	if (lst)
+	if (list)
 	{
-		if (lst->next)
-			ft_lstfree(lst->next);
-		free(lst);
+		if (list->next)
+			ft_lstfree(list->next);
+		free(list);
 	}
 }

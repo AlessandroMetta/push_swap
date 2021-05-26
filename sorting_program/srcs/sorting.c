@@ -1,187 +1,57 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 16:26:56 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/25 12:56:03 by ametta           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/lib.h"
 
-static int	control(void)
+static void	sortThree(t_list **stack_a)
 {
 	int		tmp;
-	t_list	*check;
+	t_list	*list;
 
-	check = stack_a;
-	while (check && check->next)
+	list = *stack_a;
+	tmp = list->data;
+	list = list->next;
+	while ((tmp < list->data && list->data > ft_lstlast(list)->data)
+		|| (tmp > list->data && tmp > ft_lstlast(list)->data))
 	{
-		tmp = (int)check->content;
-		check = check->next;
-		if (tmp > (int)check->content)
-			return (1);
+		ra(stack_a);
+		tmp = list->data;
+		list = list->next;
 	}
-	return (0);
-}
-
-static int middle_value(t_list *stack)
-{
-	int midVal;
-	int i;
-
-	midVal = 0;
-	i = 0;
-	while (stack)
+	if (tmp > list->data)
 	{
-		midVal += (int)stack->content;
-		i++;
-		stack = stack->next;
-	}
-	midVal /= i;
-	return (midVal);
-}
-
-static int	pre_sorting()
-{
-	int	tmp;
-	int	move_count;
-	int midVal;
-	int counter;
-
-	counter = 0;
-	tmp = 0;
-	move_count = 1;
-	midVal = middle_value(stack_a);
-	// int halfStack = ft_lstlen(stack_a)/2;
-	while (control() || (int)stack_a->content < midVal)
-	{
-		if ((int)stack_a->content < midVal)
-		{
-			if (stack_b && (int)stack_a->content < (int)ft_lstlast(stack_b)->content)
-			{
-				pb();
-				rb();
-				(counter) += 2;
-			}
-			else if (stack_b && (int)stack_a->content < (int)stack_b->content)
-			{
-				pa();
-				sa();
-				(counter) += 2;
-			}
-			else
-			{
-				pb();
-				(counter)++;
-			}
-			move_count = 0;
-		}
-		else
-		{
-			if (move_count == 0)
-			{
-				tmp = (int)stack_a->content;
-				move_count++;
-			}
-			if ((int)stack_a->content > (int)ft_lstlast(stack_a)->content)
-			{
-				ra();
-				(counter)++;
-			}
-			else
-			{
-				rra();
-				sa();
-				(counter) += 2;
-			}
-			move_count++;
-		}
-	}
-	return (counter);
-}
-
-static void	final_sorting(int *counter)
-{
-	// ft_printf("_____________________________\n");
-	// ft_printf("problems here\n");
-	if (stack_b)
-	{
-		if (!stack_a)
-		{
-			pa();
-			*counter += 1;
-			final_sorting(counter);
-		}
-		else if ((int)stack_b->content < (int)(stack_a)->content)
-		{
-			pa();
-			(*counter)++;
-			// ft_printf("_____________________________\n");
-			// ft_printf("after finalsorting\n");
-			// ft_printf("stack a: \t");
-			// ft_lstprint(stack_a);
-			// ft_printf("stack b: \t");
-			// ft_lstprint(stack_b);
-			// ft_printf("value of counter: %d\n", *counter);
-			// final_sorting(counter);
-		}
-		else
-		{
-			pb();
-			sb();
-			// ft_printf("_____________________________\n");
-			// ft_printf("after finalsorting\n");
-			// ft_printf("stack a: \t");
-			// ft_lstprint(stack_a);
-			// ft_printf("stack b: \t");
-			// ft_lstprint(stack_b);
-			// ft_printf("value of counter: %d\n", *counter);
-		}
+		tmp = list->data;
+		sa(stack_a);
+		list = list->next;
 	}
 }
 
-void sorting(void)
+static void	sortFive(t_list **stack_a, t_list **stack_b)
 {
-	int	counter;
-
-	counter = 0;
-	// while (control())
-	// {
-	// 	while (control())
-	// 		counter += pre_sorting();
-		// ft_printf("_____________________________\n");
-		// ft_printf("after presorting\n");
-		// ft_printf("stack a: \t");
-		// ft_lstprint(stack_a);
-		// ft_printf("stack b: \t");
-		// ft_lstprint(stack_b);
-		// ft_printf("value of counter: %d\n", counter);
-	// 	while (stack_b){
-	// 		final_sorting(&counter);
-	// 	}
-	// }
-	// while (control())
-		counter += pre_sorting();
-	ft_printf("stack a: \t");
-	ft_lstprint(stack_a);
-	ft_printf("\nstack b: \t");
-	ft_lstprint(stack_b);
-	ft_printf("\n-----parziale: %d moves\n", counter);
-	while (stack_b)
-		final_sorting(&counter);
-
-	// ft_printf("stack a: \t");
-	// ft_lstprint(stack_a);
-	// ft_printf("stack b: \t");
-	// ft_lstprint(stack_b);
-	if (control())
-		ft_printf("-----not sorted\n");
-	else
-		ft_printf("-----The algoritm takes: %d moves\n", counter);
+	while (ft_lstlen(*stack_a) > 3)
+	{
+		if ((*stack_a)->data > (*stack_a)->next->data)
+			sa(stack_a);
+		pb(stack_a, stack_b);
+	}
+	sortThree(stack_a);
+	while (*stack_b){
+		pa(stack_a, stack_b);
+		sortThree(stack_a);
+	}
 }
 
-// 2 12 17 19 9 11 0 7
+// static void	sortOneHundred(t_list **stack_a, t_list **stack_b)
+// {}
+
+// static void	sortFiveHundred(t_list **stack_a, t_list **stack_b)
+// {}
+
+void	sorting(t_list **stack_a, t_list **stack_b)
+{
+	if (ft_lstlen(*stack_a) <= 3)
+		sortThree(stack_a);
+	else if (ft_lstlen(*stack_a) <= 5)
+		sortFive(stack_a, stack_b);
+	// if (ft_lstlen(*stack_a) <= 100)
+	// 	sortOneHundred(stack_a, stack_b);
+	// else 
+	// 	sortFiveHundred(stack_a, stack_b);
+}

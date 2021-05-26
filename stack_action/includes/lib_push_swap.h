@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   lib_push_swap.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:16 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:49:37 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/26 10:40:04 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_PUSH_SWAP_H
 # define LIB_PUSH_SWAP_H
 
-void	ra(void);
-void	rra(void);
-void	sa(void);
+void	ra(t_list **stack_a);
+void	rra(t_list **stack_a);
+void	sa(t_list **stack_a);
 
-void	rb(void);
-void	rrb(void);
-void	sb(void);
+void	rb(t_list **stack_b);
+void	rrb(t_list **stack_b);
+void	sb(t_list **stack_b);
 
-void	ss(void);
-void	rr(void);
-void	rrr(void);
+void	ss(t_list **stack_a, t_list **stack_b);
+void	rr(t_list **stack_a, t_list **stack_b);
+void	rrr(t_list **stack_a, t_list **stack_b);
 
-void	pb(void);
-void	pa(void);
+void	pb(t_list **stack_a, t_list **stack_b);
+void	pa(t_list **stack_a, t_list **stack_b);
 
 #endif

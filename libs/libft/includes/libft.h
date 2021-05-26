@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:58:23 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:17 by ametta           ###   ########.fr       */
+/*   Updated: 2021/05/26 12:20:06 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int				data;
 	struct s_list	*next;
 }				t_list;
 
 int				ft_atoi(const char *str);
-t_list			*ft_lstnew(void *content);
+t_list			*ft_lstnew(int num);
 void			ft_lstadd_back(t_list **lst, t_list *new);
 t_list			*ft_lstlast(t_list *lst);
 void			ft_lstfree(t_list *lst);

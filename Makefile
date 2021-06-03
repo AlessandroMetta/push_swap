@@ -6,7 +6,7 @@
 #    By: ametta <ametta@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/19 09:59:31 by ametta            #+#    #+#              #
-#    Updated: 2021/05/19 16:27:37 by ametta           ###   ########.fr        #
+#    Updated: 2021/05/31 11:58:50 by ametta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ RM		=	rm -f
 SRCS	=	sorting_program/srcs/main.c	\
 			sorting_program/srcs/args_checker.c	\
 			sorting_program/srcs/sorting.c	\
+			sorting_program/srcs/sorting_tree.c	\
+			sorting_program/srcs/sorting_five.c	\
 
 OBJ		=	$(SRCS:%.c=%.o)
 

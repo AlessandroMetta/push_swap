@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:13 by ametta            #+#    #+#             */
-/*   Updated: 2021/06/03 15:11:44 by ametta           ###   ########.fr       */
+/*   Updated: 2021/06/04 18:48:43 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc <= 1)
-		error_message();
+	if (argc <= 1 || (argc == 2 && !*argv[1]))
+		return(0);
 	args_checker(argv);
 	ft_lstcreate(&stack_a, argv, argc);
 	sorting(&stack_a, &stack_b);

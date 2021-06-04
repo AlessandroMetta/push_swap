@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ametta <ametta@student.42.fr>              +#+  +:+       +#+         #
+#    By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/19 09:59:31 by ametta            #+#    #+#              #
-#    Updated: 2021/05/31 11:58:50 by ametta           ###   ########.fr        #
+#    Updated: 2021/06/04 10:52:14 by ametta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,11 @@ RM		=	rm -f
 SRCS	=	sorting_program/srcs/main.c	\
 			sorting_program/srcs/args_checker.c	\
 			sorting_program/srcs/sorting.c	\
-			sorting_program/srcs/sorting_tree.c	\
-			sorting_program/srcs/sorting_five.c	\
+			sorting_program/srcs/sortThree.c	\
+			sorting_program/srcs/sortFive.c	\
+			sorting_program/srcs/sortOneHundred.c	\
+			sorting_program/srcs/findMiddle.c	\
+			# sorting_program/srcs/sortFiveHundred.c	\
 
 OBJ		=	$(SRCS:%.c=%.o)
 

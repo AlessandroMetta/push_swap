@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:58:47 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:40 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:50:50 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 09:50:50 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 int	ft_lstlen(t_list *lst)
 {
-	int	i;
+	int		i;
+	void	*lastNode;
 
+	if (!lst)
+		return (0);
 	i = 1;
-	while (lst->next)
+	lastNode = lst;
+	while (lst->next != lastNode)
 	{
 		lst = lst->next;
 		i++;

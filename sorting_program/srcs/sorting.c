@@ -1,33 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/09 10:40:20 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 10:40:48 by ametta           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lib.h"
 
-// static int	control(t_list *stack_a)
-// {
-// 	int		tmp;
-// 	t_list	*check;
+static int	control(t_list *stack_a)
+{
+	int	tmp;
+	int	len;
 
-// 	check = stack_a;
-// 	while (check && check->next)
-// 	{
-// 		tmp = check->data;
-// 		check = check->next;
-// 		if (tmp > check->data)
-// 			return (1);
-// 	}
-// 	return (0);
-// }
+	len = ft_lstlen(stack_a);
+	while (--len)
+	{
+		tmp = stack_a->data;
+		stack_a = stack_a->next;
+		if (tmp > stack_a->data)
+			return (1);
+	}
+	return (0);
+}
 
 void	sorting(t_list **stack_a, t_list **stack_b)
 {
+	if (!control(*stack_a))
+		return ;
 	if (ft_lstlen(*stack_a) <= 3)
 		sortThree(stack_a);
 	else if (ft_lstlen(*stack_a) <= 5)
 		sortFive(stack_a, stack_b);
 	else if (ft_lstlen(*stack_a) <= 100)
 		sortOneHundred(stack_a, stack_b);
-	// else 
-	// 	sortFiveHundred(stack_a, stack_b);
-	// if (!control(*stack_a))
-	// 	ft_printf("\nOK!\n");
-	// else
-	// 	ft_printf("\nKO\n");
+	else 
+		sortFiveHundred(stack_a, stack_b);
 }

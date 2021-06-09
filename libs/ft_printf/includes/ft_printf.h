@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 16:06:23 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:47:41 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:48:17 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 09:48:18 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ typedef struct s_specs
 
 int				ft_printf(const char *format, ...);
 
-void			ft_print_chr(va_list arg, t_specs *specs, int *printed);
-void			ft_print_str(va_list arg, t_specs *specs, int *printed);
-void			ft_print_prc(int *printed, t_specs *specs);
-void			ft_print_integer(va_list arg, t_specs *specs, int *print);
-void			ft_print_unsign_int(va_list arg, t_specs *specs, int *print);
-void			ft_print_hex_low(va_list arg, t_specs *specs, int *print);
-void			ft_print_hex_up(va_list arg, t_specs *specs, int *print);
-void			ft_print_ptr(va_list arg, t_specs *specs, int *print);
+void			put_chr(va_list arg, t_specs *specs, int *printed);
+void			put_str(va_list arg, t_specs *specs, int *printed);
+void			put_prc(int *printed, t_specs *specs);
+void			put_integer(va_list arg, t_specs *specs, int *print);
+void			put_unsign_int(va_list arg, t_specs *specs, int *print);
+void			put_hex_low(va_list arg, t_specs *specs, int *print);
+void			put_hex_up(va_list arg, t_specs *specs, int *print);
+void			put_ptr(va_list arg, t_specs *specs, int *print);
 
 void			parse_flag(const char **format, t_specs *specs);
 void			parse_width(const char **format, va_list arg, t_specs *specs);

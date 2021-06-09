@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:06 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:49:09 by ametta           ###   ########.fr       */
+/*   Updated: 2021/06/09 10:12:28 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	error_message(void)
 {
 	ft_printf("Error");
-	exit(0);
+	exit(EXIT_FAILURE);
 }

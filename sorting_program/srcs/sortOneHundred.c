@@ -1,100 +1,91 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sortOneHundred.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/09 09:57:35 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 10:50:09 by ametta           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lib.h"
 
-static int findSmallest(t_list **stack_b)
+void	splitStacksBetweenSomething(t_list **stack_a, t_list **stack_b,
+									int min, int something)
 {
-	int i;
-	int j;
-	int smallest;
-	t_list *lista;
-
-	lista = *stack_b;
-	i = 0;
-	j = 0;
-	smallest = lista->data;
-	lista = lista->next;
-	while (lista)
+	while (searchForBiggerThanSomething(*stack_a, something)
+		&& (*stack_a)->data >= min)
 	{
-		i++;
-		if (lista->data < smallest)
-		{
-			smallest = lista->data;
-			j += i;
-			i = 0;
-		}
-		lista = lista->next;
-	}
-	return (j);
-}
-
-static void splitStacksBelowHalf(t_list **stack_a, t_list **stack_b)
-{
-	int smallestPos;
-	int half_stack;
-
-	half_stack = ft_lstlen(*stack_a)/2;
-	while (*stack_a)
-	{
-		if (ft_lstlen(*stack_a) <= half_stack)
-			break ;
-		smallestPos = findSmallest(stack_a);
-		if (ft_lstlen(*stack_a)/2 < smallestPos)
-		{
-			smallestPos = ft_lstlen(*stack_a) - smallestPos;
-			while (smallestPos-- > 0)
-				rra(stack_a);
-		}
+		if ((*stack_a)->data > something)
+			ra(stack_a);
 		else
-			while (smallestPos-- > 0)
-				ra(stack_a);
-		pb(stack_a, stack_b);
-		rb(stack_b);
-	}
-	// ft_printf("\n\n-----stack_a\t");
-	// ft_lstprint(*stack_a);
-	// ft_printf("\n\n-----stack_b\t");
-	// ft_lstprint(*stack_b);
-}
-
-static void pushToStackA(t_list **stack_a, t_list **stack_b)
-{
-	int smallestPos;
-
-	while (*stack_b)
-	{
-		smallestPos = findSmallest(stack_b);
-		if (ft_lstlen(*stack_b)/2 < smallestPos)
 		{
-			smallestPos = ft_lstlen(*stack_b) - smallestPos;
-			while (smallestPos-- > 0)
-				rrb(stack_b);
-		}
-		else
-			while (smallestPos-- > 0)
+			pb(stack_a, stack_b);
+			if ((min != -2147483648
+					&& ((*stack_b)->data >= (something + min) / 2))
+				|| (min == -2147483648 && (*stack_b)->data >= something / 2))
 				rb(stack_b);
-		pa(stack_a, stack_b);
-		ra(stack_a);
+		}
 	}
 }
 
-static void splitStacksAboveHalf(t_list **stack_a, t_list **stack_b)
+int	searchForBiggerThanSomething(t_list *stack, int something)
 {
-	int half_stack;
+	int	stack_len;
 
-	half_stack = ft_lstlen(*stack_a)/2;
-	while (half_stack)
+	stack_len = ft_lstlen(stack);
+	while (stack_len > 0)
 	{
-		pb(stack_a, stack_b);
-		half_stack--;
+		if (stack->data <= something)
+			return (1);
+		stack = stack->next;
+		stack_len--;
 	}
+	return (0);
+}
+
+static void	findFifths(t_list *stack, int *range)
+{
+	long	*array;
+	int		stack_len;
+	int		i;
+
+	stack_len = ft_lstlen(stack);
+	array = malloc((stack_len + 1) * sizeof(long));
+	allocation_checker((void *)array);
+	i = -1;
+	while (++i < stack_len)
+	{
+		array[i] = stack->data;
+		stack = stack->next;
+	}
+	sortingArray(array, i);
+	i = -1;
+	while (++i < 4)
+		range[i] = array[stack_len * i / 3];
+	free(array);
 }
 
 void	sortOneHundred(t_list **stack_a, t_list **stack_b)
 {
-	int half;
-	
-	half = findMiddle(stack_a);
-	splitStacksBelowHalf(stack_a, stack_b);
+	int	*range;
+	int	i;
+
+	i = 0;
+	range = malloc(sizeof(int) * 3);
+	allocation_checker((void *)range);
+	findFifths(*stack_a, range);
+	splitStacksBetweenSomething(stack_a, stack_b, range[i], range[i + 1]);
 	pushToStackA(stack_a, stack_b);
-	splitStacksAboveHalf(stack_a, stack_b);
+	while ((*stack_a)->data <= range[i + 1])
+		ra(stack_a);
+	while (++i < 2)
+		sortBetween(stack_a, stack_b, range[i], range[i + 1]);
+	splitStacksBetweenSomething(stack_a, stack_b, range[i], range[i + 1]);
 	pushToStackA(stack_a, stack_b);
+	while ((*stack_a)->data > range[i])
+		ra(stack_a);
+	free(range);
 }

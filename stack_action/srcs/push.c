@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p.c                                                :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:19 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/26 11:10:12 by ametta           ###   ########.fr       */
+/*   Updated: 2021/06/09 09:52:42 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../sorting_program/includes/lib.h"
+
+static void	removeFirstNode(t_list **stack)
+{
+	if ((*stack)->next == *stack && (*stack)->prec == *stack)
+		(*stack) = NULL;
+	else
+	{
+		((*stack)->prec)->next = (*stack)->next;
+		((*stack)->next)->prec = (*stack)->prec;
+		*stack = (*stack)->next;
+	}
+}
 
 void	pa(t_list **stack_a, t_list **stack_b)
 {
@@ -19,12 +31,8 @@ void	pa(t_list **stack_a, t_list **stack_b)
 	if (*stack_b)
 	{
 		toMove = *stack_b;
-		*stack_b = (*stack_b)->next;
-		if (stack_a)
-			toMove->next = *stack_a;
-		else
-			toMove->next = NULL;
-		*stack_a = toMove;
+		removeFirstNode(stack_b);
+		ft_lstadd_front(stack_a, toMove);
 		ft_printf("pa\n");
 	}
 }
@@ -36,13 +44,8 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	if (*stack_a)
 	{
 		toMove = *stack_a;
-		*stack_a = (*stack_a)->next;
-		if (*stack_b)
-			toMove->next = *stack_b;
-		else
-			toMove->next = NULL;
-		*stack_b = toMove;
+		removeFirstNode(stack_a);
+		ft_lstadd_front(stack_b, toMove);
 		ft_printf("pb\n");
 	}
 }
-

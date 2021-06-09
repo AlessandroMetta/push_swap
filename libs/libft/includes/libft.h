@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:58:23 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/26 12:20:06 by ametta           ###   ########.fr       */
+/*   Updated: 2021/06/09 10:13:19 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 typedef struct s_list
 {
+	struct s_list	*prec;
 	int				data;
 	struct s_list	*next;
 }				t_list;
@@ -26,8 +27,9 @@ typedef struct s_list
 int				ft_atoi(const char *str);
 t_list			*ft_lstnew(int num);
 void			ft_lstadd_back(t_list **lst, t_list *new);
+void			ft_lstadd_front(t_list **lst, t_list *new);
 t_list			*ft_lstlast(t_list *lst);
-void			ft_lstfree(t_list *lst);
+void			ft_lstfree(t_list *lst, void *last);
 void			ft_lstprint(t_list *lst);
 void			ft_lstcreate(t_list **lista, char **values, int numVal);
 int				ft_lstlen(t_list *lst);
@@ -44,6 +46,7 @@ char			*ft_strchr(const char *str, int c);
 int				max(int a, int b);
 int				min(int a, int b);
 
+void			allocation_checker(void *something);
 void			error_message(void);
 
 #endif

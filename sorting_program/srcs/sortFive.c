@@ -30,12 +30,15 @@ static void	putInCorrectPos(t_list **stack_a, t_list **stack_b, int pos)
 static int	findPos(t_list *list, int elem)
 {
 	int	pos;
+	int	len;
 
 	pos = 0;
-	while (list && elem > list->data)
+	len = ft_lstlen(list);
+	while (len && elem > list->data)
 	{
 		list = list->next;
 		pos++;
+		len--;
 	}
 	return (pos);
 }
@@ -45,6 +48,6 @@ void	sortFive(t_list **stack_a, t_list **stack_b)
 	while (ft_lstlen(*stack_a) > 3)
 		pb(stack_a, stack_b);
 	sortThree(stack_a);
-	while (*stack_b)
+	while (ft_lstlen(*stack_b) > 0)
 		putInCorrectPos(stack_a, stack_b, findPos(*stack_a, (*stack_b)->data));
 }

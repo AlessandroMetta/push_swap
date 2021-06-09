@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 12:10:16 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:03 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:49:19 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 09:49:19 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	control(t_specs *specs, int len)
 	return (i);
 }
 
-void	ft_print_str(va_list arg, t_specs *specs, int *printed)
+void	put_str(va_list arg, t_specs *specs, int *printed)
 {
 	char	*str;
 	int		i;

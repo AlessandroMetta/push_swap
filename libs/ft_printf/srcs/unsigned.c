@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 12:10:00 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:06 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:49:23 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 09:49:23 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_print_unsign_int(va_list arg, t_specs *specs, int *print)
+void	put_unsign_int(va_list arg, t_specs *specs, int *print)
 {
 	char			*s;
 	unsigned int	nbr;

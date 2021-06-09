@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:59:11 by ametta            #+#    #+#             */
-/*   Updated: 2021/06/04 17:23:09 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:55:47 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 09:55:47 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ void	args_checker(char **argv)
 				&& argv[j][i] != '-' && argv[j][i] != '+')
 				error_message();
 	}
+	if (i == 0)
+		exit(0);
 }

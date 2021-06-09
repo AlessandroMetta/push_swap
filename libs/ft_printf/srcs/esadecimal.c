@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 16:09:56 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:47:48 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:48:35 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 10:03:21 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ static void	ft_print_hex(va_list arg, t_specs *specs, int *print, char *base)
 	free(s);
 }
 
-void	ft_print_hex_low(va_list arg, t_specs *specs, int *print)
+void	put_hex_low(va_list arg, t_specs *specs, int *print)
 {
 	ft_print_hex(arg, specs, print, "0123456789abcdef");
 }
 
-void	ft_print_hex_up(va_list arg, t_specs *specs, int *print)
+void	put_hex_up(va_list arg, t_specs *specs, int *print)
 {
 	ft_print_hex(arg, specs, print, "0123456789ABCDEF");
 }

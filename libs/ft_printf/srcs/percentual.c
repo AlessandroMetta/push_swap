@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 12:09:02 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:47:58 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:49:07 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 09:49:08 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_print_prc(int *printed, t_specs *specs)
+void	put_prc(int *printed, t_specs *specs)
 {
 	if (!specs->minus && specs->zero)
 		(*printed) += fill('0', specs->width - 1);

@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   allocation_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/09 09:50:23 by ametta            #+#    #+#             */
-/*   Updated: 2021/06/09 09:50:23 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 10:08:56 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 10:17:18 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	allocation_checker(void *something)
 {
-	t_list	*last;
-
-	if (!*lst)
+	if (!something)
 	{
-		*lst = new;
-		(*lst)->next = new;
-		(*lst)->prec = new;
-		return ;
-	}
-	last = *lst;
-	while (last->next != *lst)
-		last = last->next;
-	if (new)
-	{
-		last->next = new;
-		new->prec = last;
-		(*lst)->prec = new;
-		new->next = (*lst);
+		ft_printf("Allocation Failure\n");
+		exit(EXIT_FAILURE);
 	}
 }

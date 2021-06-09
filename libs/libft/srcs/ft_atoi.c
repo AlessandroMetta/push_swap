@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:58:26 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:21 by ametta           ###   ########.fr       */
+/*   Updated: 2021/06/09 10:35:11 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(const char *str)
 		num = (num * 10) + (str[i] - '0');
 		i++;
 	}
-	if ((num > 2147483648) || (num > 2147483648 && sign == -1))
+	if ((num > 2147483648 && sign == -1) || (num > INT32_MAX && sign == 1))
 		error_message();
 	return (num * sign);
 }

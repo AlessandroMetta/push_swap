@@ -6,10 +6,10 @@ NAME	=	stack_action.a
 
 RM		=	rm -rf
 
-SRCS	=	srcs/p.c	\
-			srcs/r.c	\
-			srcs/rr.c	\
-			srcs/s.c	\
+SRCS	=	srcs/push.c	\
+			srcs/rotate.c	\
+			srcs/reverse_rotate.c	\
+			srcs/swap.c	\
 
 OBJS	=	$(SRCS:%.c=%.o)
 

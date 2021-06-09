@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstcreate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ametta <ametta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:58:40 by ametta            #+#    #+#             */
-/*   Updated: 2021/06/03 15:33:25 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:50:34 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 10:30:50 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,17 @@ static void	control(t_list **lista, int num)
 {
 	t_list	*last;
 
-	last = *lista;
-	while (last)
+	if (*lista)
 	{
+		last = *lista;
+		while (last->next != *lista)
+		{
+			if (last->data == num)
+				error_message();
+			last = last->next;
+		}
 		if (last->data == num)
 			error_message();
-		last = last->next;
 	}
 	ft_lstadd_back(lista, ft_lstnew(num));
 }

@@ -1,115 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sortFiveHundred.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/09 09:55:19 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 10:13:58 by ametta           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lib.h"
 
-static void splitStacksBelowHalf(t_list **stack_a, t_list **stack_b, long half)
+static void	findEleventh(t_list *stack, int *range)
 {
-	void *fist;
+	long	*array;
+	int		stack_len;
+	int		i;
 
-	fist = NULL;
-	while (*stack_a)
+	stack_len = ft_lstlen(stack);
+	array = malloc((stack_len + 1) * sizeof(long));
+	allocation_checker((void *)array);
+	i = -1;
+	while (++i < stack_len)
 	{
-		if ((*stack_a)->data <= half)
-			pb(stack_a, stack_b);
-		else
-		{
-			if (!fist)
-				fist = *stack_a;
-			else if (fist == *stack_a)
-				break ;
-			ra(stack_a);
-		}
+		array[i] = stack->data;
+		stack = stack->next;
 	}
-}
-
-static int findSmallest(t_list **stack_b)
-{
-	int i;
-	int j;
-	int smallest;
-	t_list *lista;
-
-	lista = *stack_b;
-	i = 0;
-	j = 0;
-	smallest = lista->data;
-	lista = lista->next;
-	while (lista)
-	{
-		i++;
-		if (lista->data < smallest)
-		{
-			smallest = lista->data;
-			j += i;
-			i = 0;
-		}
-		lista = lista->next;
-	}
-	return (j);
-}
-
-static void pushToStackA(t_list **stack_a, t_list **stack_b)
-{
-	int smallestPos;
-
-	while (*stack_b)
-	{
-		smallestPos = findSmallest(stack_b);
-		if (ft_lstlen(*stack_b)/2 < smallestPos)
-		{
-			smallestPos = ft_lstlen(*stack_b) - smallestPos;
-			while (smallestPos-- > 0)
-				rrb(stack_b);
-		}
-		else
-			while (smallestPos-- > 0)
-				rb(stack_b);
-		pa(stack_a, stack_b);
-		ra(stack_a);
-	}
-}
-
-static void splitStacksAboveHalf(t_list **stack_a, t_list **stack_b, long half)
-{
-	void *fist;
-
-	fist = NULL;
-	while (*stack_a)
-	{
-		if ((*stack_a)->data > half)
-			pb(stack_a, stack_b);
-		else
-		{
-			if (!fist)
-				fist = *stack_a;
-			else if (fist == *stack_a)
-				break ;
-			ra(stack_a);
-		}
-	}
+	sortingArray(array, i);
+	i = -1;
+	while (++i < 6)
+		range[i] = array[stack_len * i / 5];
+	free(array);
 }
 
 void	sortFiveHundred(t_list **stack_a, t_list **stack_b)
 {
-	int firstQuarter;
-	int half;
-	int thirdQuarter;
-	
-	firstQuarter = 0;
-	half = 0;
-	thirdQuarter = 0;
-	findMiddle(stack_a, firstQuarter, half, thirdQuarter);
+	int	*range;
+	int	i;
 
-	splitStacksBelowHalf(stack_a, stack_b, firstQuarter);
+	i = 0;
+	range = malloc(sizeof(int) * 6);
+	allocation_checker((void *)range);
+	findEleventh(*stack_a, range);
+	splitStacksBetweenSomething(stack_a, stack_b, range[i], range[i + 1]);
 	pushToStackA(stack_a, stack_b);
-	splitStacksAboveHalf(stack_a, stack_b, firstQuarter);
+	while ((*stack_a)->data <= range[i + 1])
+		ra(stack_a);
+	while (++i < 3)
+		sortBetween(stack_a, stack_b, range[i], range[i + 1]);
+	splitStacksBetweenSomething(stack_a, stack_b, range[i], range[i + 1]);
+	while (ft_lstlast(*stack_a)->data > range[i])
+		rra(stack_a);
 	pushToStackA(stack_a, stack_b);
-
-	splitStacksBelowHalf(stack_a, stack_b, half);
+	while ((*stack_a)->data <= range[i + 1])
+		ra(stack_a);
+	i++;
+	splitStacksBetweenSomething(stack_a, stack_b, range[i], range[i + 1]);
 	pushToStackA(stack_a, stack_b);
-	splitStacksAboveHalf(stack_a, stack_b, half);
-	pushToStackA(stack_a, stack_b);
-
-	splitStacksBelowHalf(stack_a, stack_b, thirdQuarter);
-	pushToStackA(stack_a, stack_b);
-	splitStacksAboveHalf(stack_a, stack_b, thirdQuarter);
-	pushToStackA(stack_a, stack_b);
+	while ((*stack_a)->data > range[i])
+		ra(stack_a);
+	free(range);
 }

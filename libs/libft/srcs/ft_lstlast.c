@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 09:58:45 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:37 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:50:44 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 09:50:44 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,5 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst->next)
-	{
-		lst = lst->next;
-	}
-	return (lst);
+	return (lst->prec);
 }

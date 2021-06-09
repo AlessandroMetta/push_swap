@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RandomIntegerGenerator.c                           :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 17:49:58 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:50:00 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:50:29 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 09:50:29 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "../includes/libft.h"
 
-#define MAX 10000000
-#define MIN -10000000
-
-int main(int argc, char **argv)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	srand(time(NULL));
-	if (!(argc > 1))
-		return (1);
-	int num = atoi(argv[1]);
-	while(num-- > 0)
+	if (!*lst)
 	{
-		printf("%d", (MIN + rand() % (MAX - MIN + 1)));
-		if (num != 0)
-			printf(" ");
+		*lst = new;
+		new->next = new;
+		new->prec = new;
+		return ;
 	}
-	return(0);
+	new->prec = (*lst)->prec;
+	new->next = (*lst);
+	((*lst)->prec)->next = new;
+	(*lst)->prec = new;
+	(*lst) = new;
 }
-
-// ARG=$(./a.out 10)

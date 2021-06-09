@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 16:11:55 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:12 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:49:29 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 10:15:53 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ char	*ft_itoa_base(unsigned long long int nbr, char *ref_base)
 		cp /= base;
 	}
 	str_nbr = (char *)malloc(sizeof(char) * (size + 1));
-	if (!str_nbr)
-		return (NULL);
+	allocation_checker((void *)str_nbr);
 	str_nbr[size--] = '\0';
 	str_nbr[0] = '0';
 	while (nbr > 0)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 16:08:33 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:47:52 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:48:55 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 10:02:29 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ static void	init_struct(t_specs *to_init)
 static void	sorting_conv(va_list arg, t_specs *specs, int *printed)
 {
 	if (specs->type == 'c')
-		ft_print_chr(arg, specs, printed);
+		put_chr(arg, specs, printed);
 	else if (specs->type == 's')
-		ft_print_str(arg, specs, printed);
+		put_str(arg, specs, printed);
 	else if (specs->type == 'i' || specs->type == 'd')
-		ft_print_integer(arg, specs, printed);
+		put_integer(arg, specs, printed);
 	else if (specs->type == 'u')
-		ft_print_unsign_int(arg, specs, printed);
+		put_unsign_int(arg, specs, printed);
 	else if (specs->type == 'x')
-		ft_print_hex_low(arg, specs, printed);
+		put_hex_low(arg, specs, printed);
 	else if (specs->type == 'X')
-		ft_print_hex_up(arg, specs, printed);
+		put_hex_up(arg, specs, printed);
 	else if (specs->type == 'p')
-		ft_print_ptr(arg, specs, printed);
+		put_ptr(arg, specs, printed);
 	else if (specs->type == '%')
-		ft_print_prc(printed, specs);
+		put_prc(printed, specs);
 	else
 		(*printed) = -1;
 }

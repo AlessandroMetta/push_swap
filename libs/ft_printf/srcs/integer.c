@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 12:09:29 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:47:50 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:48:47 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 09:48:47 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static size_t	control(t_specs *specs, char **s, long int nbr, int *print)
 	return (len);
 }
 
-void	ft_print_integer(va_list arg, t_specs *specs, int *print)
+void	put_integer(va_list arg, t_specs *specs, int *print)
 {
 	char		*s;
 	long int	nbr;

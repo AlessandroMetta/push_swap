@@ -1,4 +1,5 @@
 # push_swap
 
-The project is incorrect, is in revision phase.
+The project is INCORRECT, is in revision phase.
+
 Not evaluated yet.

@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 09:54:23 by ametta            #+#    #+#             */
-/*   Updated: 2021/07/05 09:17:49 by ametta           ###   ########.fr       */
+/*   Updated: 2021/06/09 10:01:34 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	sa(t_list **stack_a)
 	if (!*stack_a || (*stack_a)->next == *stack_a)
 		return ;
 	swap(stack_a);
-	ft_putendl("sa");
+	ft_printf("sa\n");
 }
 
 void	sb(t_list **stack_b)
@@ -48,7 +48,7 @@ void	sb(t_list **stack_b)
 	if (!*stack_b || (*stack_b)->next == *stack_b)
 		return ;
 	swap(stack_b);
-	ft_putendl("sb");
+	ft_printf("sb\n");
 }
 
 void	ss(t_list **stack_a, t_list **stack_b)
@@ -59,7 +59,7 @@ void	ss(t_list **stack_a, t_list **stack_b)
 		{
 			swap(stack_a);
 			swap(stack_b);
-			ft_putendl("ss");
+			ft_printf("ss\n");
 		}
 	}
 }

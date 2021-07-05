@@ -6,14 +6,14 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:08 by ametta            #+#    #+#             */
-/*   Updated: 2021/07/05 09:13:05 by ametta           ###   ########.fr       */
+/*   Updated: 2021/07/05 12:03:32 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_H
 # define LIB_H
 
-# include "../../libft/includes/libft.h"
+# include "../../libs/libft/includes/libft.h"
 # include "../../stack_action/includes/lib_push_swap.h"
 
 void	args_checker(char **argv);
@@ -24,7 +24,7 @@ void	sortFive(t_list **stack_a, t_list **stack_b);
 void	sortOneHundred(t_list **stack_a, t_list **stack_b);
 void	sortFiveHundred(t_list **stack_a, t_list **stack_b);
 
-void	sortingArray(long *array, long i);
+void	sortingArray(int *array, int i);
 void	searchStackHeads(t_list *lista, int *smallestPos, int *highestPos);
 void	rotateStakA(t_list **stack_a, t_list **stack_b, int i, int len);
 void	pushToStackA(t_list **stack_a, t_list **stack_b);

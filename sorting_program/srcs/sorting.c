@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:40:20 by ametta            #+#    #+#             */
-/*   Updated: 2021/07/05 09:30:40 by ametta           ###   ########.fr       */
+/*   Updated: 2021/06/09 10:40:48 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void	sorting(t_list **stack_a, t_list **stack_b)
 		sortFive(stack_a, stack_b);
 	else if (ft_lstlen(*stack_a) <= 100)
 		sortOneHundred(stack_a, stack_b);
-	else
+	else 
 		sortFiveHundred(stack_a, stack_b);
 }

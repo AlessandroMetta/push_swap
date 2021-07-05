@@ -16,6 +16,7 @@ SRCS	=	srcs/ft_atoi.c	\
 			srcs/ft_lstlast.c	\
 			srcs/ft_lstlen.c	\
 			srcs/ft_lstnew.c	\
+			srcs/ft_lstprint.c	\
 			srcs/ft_memcpy.c	\
 			srcs/ft_split.c	\
 			srcs/ft_strlcpy.c	\
@@ -23,11 +24,9 @@ SRCS	=	srcs/ft_atoi.c	\
 			srcs/ft_strncmp.c	\
 			srcs/utils.c	\
 			srcs/ft_strchr.c	\
+			srcs/ft_min.c	\
+			srcs/ft_max.c	\
 			srcs/allocation_checker.c 	\
-			srcs/ft_putchar.c 	\
-			srcs/ft_putstr.c 	\
-			srcs/ft_putendl.c 	\
-
 
 OBJS	=	$(SRCS:%.c=%.o)
 

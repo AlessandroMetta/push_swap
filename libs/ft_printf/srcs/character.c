@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   character.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/09 09:55:40 by ametta            #+#    #+#             */
-/*   Updated: 2021/06/09 09:56:12 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 09:48:28 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 09:48:28 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lib.h"
+#include "../includes/ft_printf.h"
 
-int	main(int argc, char **argv)
+void	put_chr(va_list arg, t_specs *specs, int *printed)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	char	chr;
+	int		i;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc <= 1)
-		return (1);
-	args_checker(argv);
-	ft_lstcreate(&stack_a, argv, argc);
-	sorting(&stack_a, &stack_b);
-	if (stack_a)
-		ft_lstfree(stack_a, stack_a->prec);
-	if (stack_b)
-		ft_lstfree(stack_b, stack_b->prec);
-	return (0);
+	i = 0;
+	chr = va_arg(arg, int);
+	if (specs->minus)
+		write(1, &chr, 1);
+	while (i < specs->width - 1)
+	{
+		write(1, " ", 1);
+		i++;
+		(*printed)++;
+	}
+	if (!specs->minus)
+		write(1, &chr, 1);
+	(*printed)++;
 }

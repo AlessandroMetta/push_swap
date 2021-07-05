@@ -6,18 +6,18 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 09:59:32 by ametta            #+#    #+#             */
-/*   Updated: 2021/06/09 10:00:02 by ametta           ###   ########.fr       */
+/*   Updated: 2021/07/05 12:05:22 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lib.h"
 
-void	sortingArray(long *array, long i)
+void	sortingArray(int *array, int i)
 {
-	int		j;
-	long	temp;
+	int	j;
+	int	temp;
 
-	while (i > 0)
+	while (--i > 0)
 	{
 		j = 0;
 		while (j < i)
@@ -30,7 +30,6 @@ void	sortingArray(long *array, long i)
 			}
 			j++;
 		}
-		i--;
 	}
 }
 

@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   allocation_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 09:19:19 by ametta            #+#    #+#             */
-/*   Updated: 2021/07/05 09:30:14 by ametta           ###   ########.fr       */
+/*   Created: 2021/06/09 10:08:56 by ametta            #+#    #+#             */
+/*   Updated: 2021/06/09 10:17:18 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_putendl(char *s)
+void	allocation_checker(void *something)
 {
-	ft_putstr(s);
-	ft_putchar('\n');
+	if (!something)
+	{
+		ft_printf("Allocation Failure\n");
+		exit(EXIT_FAILURE);
+	}
 }

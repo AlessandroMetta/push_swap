@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:58:23 by ametta            #+#    #+#             */
-/*   Updated: 2021/07/05 09:24:05 by ametta           ###   ########.fr       */
+/*   Updated: 2021/06/09 10:13:19 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "../../ft_printf/includes/ft_printf.h"
 
 typedef struct s_list
 {
@@ -29,9 +30,7 @@ void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 t_list			*ft_lstlast(t_list *lst);
 void			ft_lstfree(t_list *lst, void *last);
-void			ft_putstr(char *s);
-void			ft_putendl(char *s);
-void			ft_putchar(char c);
+void			ft_lstprint(t_list *lst);
 void			ft_lstcreate(t_list **lista, char **values, int numVal);
 int				ft_lstlen(t_list *lst);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -44,6 +43,8 @@ int				ft_isdigit(int c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_isspace(const char c);
 char			*ft_strchr(const char *str, int c);
+int				max(int a, int b);
+int				min(int a, int b);
 
 void			allocation_checker(void *something);
 void			error_message(void);

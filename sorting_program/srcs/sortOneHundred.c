@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 09:57:35 by ametta            #+#    #+#             */
-/*   Updated: 2021/06/09 10:50:09 by ametta           ###   ########.fr       */
+/*   Updated: 2021/07/05 12:12:18 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ int	searchForBiggerThanSomething(t_list *stack, int something)
 
 static void	findFifths(t_list *stack, int *range)
 {
-	long	*array;
-	int		stack_len;
-	int		i;
+	int	*array;
+	int	stack_len;
+	int	i;
 
 	stack_len = ft_lstlen(stack);
-	array = malloc((stack_len + 1) * sizeof(long));
-	allocation_checker((void *)array);
+	array = malloc(stack_len * sizeof(int));
+	// allocation_checker((void **)array);
 	i = -1;
 	while (++i < stack_len)
 	{
@@ -65,6 +65,7 @@ static void	findFifths(t_list *stack, int *range)
 	i = -1;
 	while (++i < 4)
 		range[i] = array[stack_len * i / 3];
+	range[3] = array[stack_len-1];
 	free(array);
 }
 
@@ -74,7 +75,7 @@ void	sortOneHundred(t_list **stack_a, t_list **stack_b)
 	int	i;
 
 	i = 0;
-	range = malloc(sizeof(int) * 3);
+	range = malloc(sizeof(int) * 4);
 	allocation_checker((void *)range);
 	findFifths(*stack_a, range);
 	splitStacksBetweenSomething(stack_a, stack_b, range[i], range[i + 1]);

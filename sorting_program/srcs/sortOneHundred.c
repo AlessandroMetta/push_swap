@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 09:57:35 by ametta            #+#    #+#             */
-/*   Updated: 2021/07/05 12:12:18 by ametta           ###   ########.fr       */
+/*   Updated: 2021/07/05 15:55:10 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	findFifths(t_list *stack, int *range)
 
 	stack_len = ft_lstlen(stack);
 	array = malloc(stack_len * sizeof(int));
-	// allocation_checker((void **)array);
+	allocation_checker((void *)array);
 	i = -1;
 	while (++i < stack_len)
 	{
@@ -65,7 +65,7 @@ static void	findFifths(t_list *stack, int *range)
 	i = -1;
 	while (++i < 4)
 		range[i] = array[stack_len * i / 3];
-	range[3] = array[stack_len-1];
+	range[3] = array[stack_len - 1];
 	free(array);
 }
 

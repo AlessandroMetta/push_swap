@@ -6,7 +6,7 @@
 #    By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/19 09:59:31 by ametta            #+#    #+#              #
-#    Updated: 2021/07/05 11:48:46 by ametta           ###   ########.fr        #
+#    Updated: 2021/07/05 15:52:23 by ametta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ NAME			=	push_swap
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror -g
 
-FT_PRINT		=	libs/ft_printf/libftprintf.a
-LIBFT			=	libs/libft/libft.a
+LIBFT			=	libft/libft.a
 STACK_ACTION	=	stack_action/stack_action.a
 
 RM		=	rm -f
@@ -35,22 +34,19 @@ SRCS	=	sorting_program/srcs/main.c	\
 OBJ		=	$(SRCS:%.c=%.o)
 
 $(NAME) :	$(OBJ)
-			make -C libs/libft
-			make -C libs/ft_printf
+			make -C libft
 			make -C stack_action
-			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(FT_PRINT) $(LIBFT) $(STACK_ACTION)
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(STACK_ACTION)
 
 all		:	$(NAME)
 
 clean	:	
-			make clean -C libs/libft
-			make clean -C libs/ft_printf
+			make clean -C libft
 			make clean -C stack_action
 			$(RM) $(OBJ)
 
 fclean	:	clean
-			make fclean -C libs/libft
-			make fclean -C libs/ft_printf
+			make fclean -C libft
 			make fclean -C stack_action
 			$(RM) $(NAME)
 

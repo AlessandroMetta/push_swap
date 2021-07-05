@@ -6,14 +6,14 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:08 by ametta            #+#    #+#             */
-/*   Updated: 2021/07/05 12:03:32 by ametta           ###   ########.fr       */
+/*   Updated: 2021/07/05 15:47:40 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_H
 # define LIB_H
 
-# include "../../libs/libft/includes/libft.h"
+# include "../../libft/includes/libft.h"
 # include "../../stack_action/includes/lib_push_swap.h"
 
 void	args_checker(char **argv);

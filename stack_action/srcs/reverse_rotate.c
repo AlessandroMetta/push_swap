@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 09:53:09 by ametta            #+#    #+#             */
-/*   Updated: 2021/06/09 09:53:09 by ametta           ###   ########.fr       */
+/*   Updated: 2021/07/05 15:50:56 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rra(t_list **stack_a)
 	if (*stack_a && ft_lstlen(*stack_a) > 1)
 	{
 		*stack_a = (*stack_a)->prec;
-		ft_printf("rra\n");
+		ft_putendl("rra");
 	}
 }
 
@@ -26,7 +26,7 @@ void	rrb(t_list **stack_b)
 	if (*stack_b && ft_lstlen(*stack_b) > 1)
 	{
 		*stack_b = (*stack_b)->prec;
-		ft_printf("rrb\n");
+		ft_putendl("rrb");
 	}
 }
 
@@ -38,7 +38,7 @@ void	rrr(t_list **stack_a, t_list **stack_b)
 		{
 			*stack_b = (*stack_b)->prec;
 			*stack_a = (*stack_a)->prec;
-			ft_printf("rrr\n");
+			ft_putendl("rrr");
 		}
 	}
 }

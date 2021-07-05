@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 09:55:19 by ametta            #+#    #+#             */
-/*   Updated: 2021/07/05 12:19:01 by ametta           ###   ########.fr       */
+/*   Updated: 2021/07/05 15:55:18 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	findEleventh(t_list *stack, int *range)
 	i = -1;
 	while (++i < 6)
 		range[i] = array[stack_len * i / 5];
-	range[5] = array[stack_len-1];
+	range[5] = array[stack_len - 1];
 	free(array);
 }
 

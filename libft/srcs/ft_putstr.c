@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstprint.c                                      :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/09 09:50:59 by ametta            #+#    #+#             */
-/*   Updated: 2021/06/09 09:51:29 by ametta           ###   ########.fr       */
+/*   Created: 2021/07/05 09:18:49 by ametta            #+#    #+#             */
+/*   Updated: 2021/07/05 09:30:16 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_lstprint(t_list *list)
+void	ft_putstr(char *s)
 {
-	int	len;
+	int	i;
 
-	if (list)
+	i = 0;
+	while (s[i] != 0)
 	{
-		len = ft_lstlen(list);
-		while (len--)
-		{
-			ft_printf("%d  ", list->data);
-			list = list->next;
-		}
-		ft_printf("\n");
+		ft_putchar(s[i++]);
 	}
-	else
-		ft_printf("Empty\n");
 }

@@ -6,7 +6,7 @@
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:19 by ametta            #+#    #+#             */
-/*   Updated: 2021/06/09 09:52:42 by ametta           ###   ########.fr       */
+/*   Updated: 2021/07/05 15:50:45 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	pa(t_list **stack_a, t_list **stack_b)
 		toMove = *stack_b;
 		removeFirstNode(stack_b);
 		ft_lstadd_front(stack_a, toMove);
-		ft_printf("pa\n");
+		ft_putendl("pa");
 	}
 }
 
@@ -46,6 +46,6 @@ void	pb(t_list **stack_a, t_list **stack_b)
 		toMove = *stack_a;
 		removeFirstNode(stack_a);
 		ft_lstadd_front(stack_b, toMove);
-		ft_printf("pb\n");
+		ft_putendl("pb");
 	}
 }

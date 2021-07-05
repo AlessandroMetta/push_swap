@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_max.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <ametta@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 11:04:53 by ametta            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:47 by ametta           ###   ########.fr       */
+/*   Created: 2021/05/19 09:59:06 by ametta            #+#    #+#             */
+/*   Updated: 2021/07/05 09:17:59 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	max(int a, int b)
+void	error_message(void)
 {
-	if (a > b)
-		return (a);
-	return (b);
+	ft_putendl("Error");
+	exit(EXIT_FAILURE);
 }

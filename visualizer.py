@@ -26,19 +26,26 @@ You can decrease or increase the speed with the matching buttons.
 """
 
 
+RELATIVE_PATH = r'push_swap'
+
+
 class PsGui:
     def __init__(self, master):
         ww = 600
         wh = 600
         self.i = 0
         self.speed = 0
-        PUSHS_PATH = "/Users/gasolino/Desktop/push_swap 2/push_swap"
+        dirname = os.path.dirname(os.path.abspath(__file__))
+        PUSHS_PATH = os.path.join(dirname, RELATIVE_PATH)
         self.pile_a = [int(num) for num in sys.argv[1:]]
         self.first_pile = self.pile_a[:]
         self.pile_b = []
         self.cmds = subprocess.check_output([PUSHS_PATH] + sys.argv[1:], stderr=subprocess.STDOUT,
                                             timeout=12).splitlines()
-        self.prespeed = 1 / len(self.pile_a)
+        if len(self.pile_a) != 0:
+            self.prespeed = 1 / len(self.pile_a)
+        else:
+            self.prespeed = 0
         self.master = master
         master.title("Push_swap viewer")
         self.mainframe = Frame(master)
@@ -169,8 +176,10 @@ class PsGui:
         wh = 600
         hw = ww / 2
         hm = len(self.pile_a) + len(self.pile_b)
-        mx = max(self.pile_a + self.pile_b)
-        mn = min(self.pile_a + self.pile_b)
+        mx, mn = (0, 0)
+        if (hm != 0):
+            mx = max(self.pile_a + self.pile_b)
+            mn = min(self.pile_a + self.pile_b)
         rects = []
         if len(self.pile_a) > 0:
             a_val = [(num - mn) / (mx - mn) for num in self.pile_a]
@@ -197,7 +206,7 @@ class PsGui:
                     self.pile_a, self.pile_b = \
                         self.launch_cmds(self.cmds[self.i])
                     self.draw_rectangles()
-                    time.sleep(5 * self.speed)
+                    time.sleep(2 * self.speed)
                     self.can.update()
                     self.listbox.yview_scroll(1, 'units')
                     self.i += 1

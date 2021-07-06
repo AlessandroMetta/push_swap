@@ -1,6 +1,6 @@
 # push_swap
 
-[ITA]
+\[ITA\]
 Dopo aver letto un (bel) pò di documentazione su algoritmi di ordinamento, molti approcci di risoluzione del problema,
 aver riscritto diverse volte molte funzioni, ho deciso di strutturare l'algoritmo in modo che potesse rispondere perfettamente alle
 richieste della correzzione, andandomi a gestire i diversi casi:
@@ -15,11 +15,11 @@ richieste della correzzione, andandomi a gestire i diversi casi:
 - per 500 elementi svolgo lo stesso algoritmo per l'ordimaneto di 100 valori, andando a selezionare invece 5 intervalli. Anche in
   questo caso il numero di mosse (tra le 6500 e le 7500) non permette di prendere il punteggio massimo.
 
-[Post_Evaluation] la valutazione è stata molto d'aiuto, perchè mi ha permesso di capire come non devessi gestire l'ordinamento
+\[Post_Evaluation\] la valutazione di [Damiano](https://github.com/demian2435) è stata molto d'aiuto, perchè mi ha permesso di capire come non devessi gestire l'ordinamento
 con le mosse singoli, ma che il progetto era da impostare con le mosse doppie, perche in tal modo avrei dimezzato direttamnte il 
 numero di mosse impiegate.
 
-[ENG]
+\[ENG\]
 This repo contains my work on the 42's project about the sorting of a stack. You can find more detail in the file subject.
 
 After reading a lot on sorting algoritm and stacks, it seemed more natural sort the stack by ranges. So for the 100 number, 

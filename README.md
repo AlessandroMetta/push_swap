@@ -1,5 +1,9 @@
 # push_swap
 
+
+\[Update after a while\]
+Personalemente consiglio a chiunque incappasse in questa pagina di approfondire la spiegazione del progetto tramite [l'ottimo materiale](https://github.com/sisittu99/push_swap) che questo ragazzo ha redatto, che personalmente ringrazio per la citazione.
+
 \[ITA\]
 Dopo aver letto un (bel) pò di documentazione su algoritmi di ordinamento, molti approcci di risoluzione del problema,
 aver riscritto diverse volte molte funzioni, ho deciso di strutturare l'algoritmo in modo che potesse rispondere perfettamente alle
